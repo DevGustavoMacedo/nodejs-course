@@ -1,0 +1,39 @@
+<h1>Todas tasks</h1>
+
+{{#if tasks}}
+  <table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th>Realizada</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each tasks}}
+      <tr>
+        <td>{{this.title}}</td>
+        <td>{{this.description}}</td>
+        <td>{{#if this.done}}
+          Sim
+        {{else}}
+          Não
+        {{/if}}</td>
+        <td><a href='/tasks/{{this.id}}'>Ver</a></td>
+        <td><a href='/tasks/edit/{{this.id}}'>Editar</a></td>
+        <td>
+          <form action='/tasks/delete' method='post'>
+            <input type='hidden' name="id" value='{{this.id}}' />
+            <input type='submit' value='Remover' />
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+  <p>Nenhuma task</p>
+{{/if}}
