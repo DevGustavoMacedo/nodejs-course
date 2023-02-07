@@ -1,0 +1,62 @@
+<h3>Usuário</h3>
+
+<ul>
+  <li>Nome: {{user.name}}</li>
+  <li>Ocupação: {{user.occupation}}</li>
+  {{#if user.newsletter}}
+    <li>Acompanha a Newsletter :D</li>
+  {{/if}}
+</ul>
+
+<br />
+<br />
+
+<form action='/users/update' method='post'>
+  <input type="hidden" name="id" value="{{user.id}}">
+  <label for='name'>Nome: </label>
+  <input type='text' name='name' value="{{user.name}}" />
+  <label for='occupation'>Ocupação</label>
+  <input type='text' name='occupation' value="{{user.occupation}}" />
+  <label for='newsletter'>Ver novidades? </label>
+  <input type='checkbox' name='newsletter' {{#if user.newsletter}}
+    checked
+  {{/if}} />
+  <input type="submit" value="Editar">
+</form>
+
+<br />
+
+<form action='/users/delete' method='post'>
+  <input type="hidden" name="id" value="{{user.id}}" />
+  <input type='submit' value='Eliminar' />
+</form>
+
+<br />
+<br />
+
+<h3>Endereços</h3>
+<br />
+
+{{#each user.addresses }}
+  <form action='/address/create' method='post'>
+  <input type="hidden" name="userId" value="{{this.userId}}">
+  <label for='street'>Rua: </label>
+  <input type='text' name='street' value="{{this.street}}" />
+  <label for='number'>Número: </label>
+  <input type='number' name='number' value="{{this.number}}" />
+  <label for='city'>Cidade: </label>
+  <input type='text' name='city' value="{{this.city}}" />
+  <input type="submit" value="Salvar">
+</form>
+
+<br />
+
+<form action='/address/delete' method='post'>
+  <input type="hidden" name="id" value="{{this.id}}" />
+  <input type='submit' value='Eliminar' />
+</form>
+
+<br />
+<br />
+{{/each}}
+

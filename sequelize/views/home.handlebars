@@ -1,0 +1,15 @@
+<h1>Usuários</h1>
+<br />
+<br />
+
+{{#each users}}
+  <ul>
+    <li>Nome: {{name}}</li>
+    <li>Ocupação: {{occupation}}</li>
+    {{#if newsletter}}
+      <li>Acompanha a Newsletter :D</li>
+    {{/if}}
+  </ul>
+  <br />
+  <br />
+{{/each}}
