@@ -1,0 +1,27 @@
+<table>
+  <thead><tr><th><a href='/formBook'>Adicionar livro</a></th></tr></thead>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Paginas</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each books}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{pages}}</td>
+        <td><a href='/book/{{id}}'>Ver</a></td>
+        <td><a href='/book/edit/{{id}}'>Editar</a></td>
+        <td>
+          <form action='/book/delete/{{id}}' method='post'>
+            <input type='submit' value='Remover' />
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

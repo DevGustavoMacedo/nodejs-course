@@ -1,0 +1,43 @@
+<form action={{#if edit}}
+  '/book/edit/'
+{{else}}
+  '/book/add/'
+{{/if}} method='post'>
+<h4><a href="/">Voltar</a></h4>
+  <h2>{{#if edit}}
+      Edite
+    {{else}}
+      Adicione
+    {{/if}}
+    seu livro</h2>
+  {{#if edit}}
+    <input type='hidden' name='id' value={{book.id}} />
+  {{/if}}
+  <div class='form-control'>
+    <label for='title'>
+      Título:
+    </label>
+    <input type='text' name='title' value={{#if edit}}
+      {{book.title}}
+    {{else}}
+      ''
+    {{/if}} />
+  </div>
+
+  <div class='form-control'>
+    <label for='pages'>
+      Qtd páginas:
+    </label>
+    <input type='number' name='pages' value={{#if edit}}
+      {{book.pages}}
+    {{else}}
+      ''
+    {{/if}} />
+  </div>
+
+  <input type='submit' value={{#if edit}}
+    'Editar'
+  {{else}}
+    'Adicionar'
+  {{/if}} />
+</form>
