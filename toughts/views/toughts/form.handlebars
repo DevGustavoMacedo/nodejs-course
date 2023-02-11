@@ -1,0 +1,30 @@
+<div class='tought-form-container'>
+  <a href='/dashboard'>Voltar</a>
+  <h1>{{#if tought}}
+    Editando
+  {{else}}
+    Criando
+  {{/if}} um Pensamento:</h1>
+  <form action={{#if tought}}
+    '/dashboard/edit'
+  {{else}}
+    '/dashboard/add'
+  {{/if}} method='POST'>
+  {{#if tought}}
+    <input type='hidden' name='id' value={{tought.id}} />
+  {{/if}}
+    <div class='form-control'>
+      <label for='title'>Título:</label>
+      <input type='text' name='title' placeholder='Digite o título' required value={{#if tought}}
+        '{{tought.title}}'
+      {{else}}
+        ''
+      {{/if}} />
+    </div>
+    <input type='submit' value={{#if tought}}
+      'Editar Pensamento'
+    {{else}}
+      'Criar Pensamento'
+    {{/if}} />
+  </form>
+</div>
